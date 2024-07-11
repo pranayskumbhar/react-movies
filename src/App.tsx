@@ -18,10 +18,8 @@ function App() {
       title: "Inception",
       poster:
         "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
-    }
+    },
   ];
-
-
 
   const upcommingMovies: movieDTO[] = [
     {
@@ -35,13 +33,13 @@ function App() {
       title: "Mirzaput",
       poster:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk_mRmeQJekSg2PpU-q3OlNXJA_lrZI6f9bg&s",
-    }
+    },
   ];
 
   return (
     <>
       {/* <IndividualMovie {...testMovie} /> */}
-      <h3>Playing Now..</h3>
+      <h3> Now Playing ..</h3>
       <MoviesList movies={inTheaters} />
       <h3>Upcoming movies..</h3>
       <MoviesList movies={upcommingMovies} />
