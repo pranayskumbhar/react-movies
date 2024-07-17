@@ -17,6 +17,20 @@ export default function GenericList(props: genericListProps) {
   }
 }
 
+
+//ALTERNATE WE CAN WRITE IS
+// export default function GenericList(props: genericListProps) {
+//   if (!props.list) {
+    
+//     return <Loading />;
+//   } else {
+//     return props.children;
+
+//   }
+   
+// }
+
+
 interface genericListProps {
   list: any;
   loaddingUI?: ReactElement;

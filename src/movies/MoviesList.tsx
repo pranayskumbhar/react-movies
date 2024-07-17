@@ -4,6 +4,8 @@ import css from "./MoviesList.module.css";
 import Loading from "../utils/Loading";
 import GenericList from "../utils/GenericList";
 export default function MoviesList(props: moviesListProps) {
+console.log(props.movies)
+
   return (
     <GenericList list={props.movies}>
       <div className={css.div}>
