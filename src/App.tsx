@@ -5,6 +5,9 @@ import IndividualMovie from "./movies/IndividualMovie";
 import { landingPageDTO, movieDTO } from "./movies/movies.models";
 import MoviesList from "./movies/MoviesList";
 import Button from "./utils/Button";
+import Menu from "./Menu";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import IndexGenres from "./genres/IndexGenres";
 
 function App() {
   const [movies, setMovies] = useState<landingPageDTO>({});
@@ -41,20 +44,31 @@ function App() {
           },
         ],
       });
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="container">
-      {/* <Button>Whatever Text</Button> */}
-      {/* <IndividualMovie {...testMovie} /> */}
-      <h3> Now Playing ..</h3>
-      <MoviesList movies={movies.inTheaters} />
-      <h3>Upcoming movies..</h3>
-      <MoviesList movies={movies.upcommingMovies} />
-    </div>
+    <BrowserRouter>
+      <Menu />
+      <div className="container">
+        {/* <Button>Whatever Text</Button> */}
+        {/* <IndividualMovie {...testMovie} /> */}
+
+        <Switch>
+          <Route exact path="/">
+            <h3> Now Playing ..</h3>
+            <MoviesList movies={movies.inTheaters} />
+            <h3>Upcoming movies..</h3>
+            <MoviesList movies={movies.upcommingMovies} />
+          </Route>
+          <Route path="/genres">
+            <IndexGenres />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
