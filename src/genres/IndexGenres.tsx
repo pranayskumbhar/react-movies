@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 export default function IndexGenres() {
-  return (
+   return (
     <>
       <h3>Genres List </h3>
+      <Link className="btn btn-primary" to="/genres/create">Create Genre</Link>
     </>
   );
 }
