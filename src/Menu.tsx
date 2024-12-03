@@ -38,6 +38,12 @@ export default function Menu() {
                 Create a movie
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/genres/basic">
+                Formik
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
