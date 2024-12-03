@@ -38,7 +38,7 @@ interface genreFormProp {
   model: genreCreationDTO;
   onSubmit(
     values: genreCreationDTO,
-    action: FormikHelpers<genreCreationDTO>
+    action: FormikHelpers<genreCreationDTO>  
   ): void;
 }
 export default GenreForm;

@@ -55,10 +55,10 @@ const genres:genreDTO[] = [
 
               <div className="col-auto">
                  <div className="form-check">
-                  <Field className="form-check-input" id="upcommingReleases"
-                  name="upcommingReleases" type="checkbox"
+                  <Field className="form-check-input" id="upcomingReleases"
+                  name="upcomingReleases" type="checkbox"
                   />
-                  <label className="form-check-label" htmlFor="upcommingReleases">Upcomming Releases</label>
+                  <label className="form-check-label" htmlFor="upcomingReleases">Upcomming Releases</label>
                  </div>
               </div>
 

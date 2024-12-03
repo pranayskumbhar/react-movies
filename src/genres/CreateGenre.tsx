@@ -25,10 +25,13 @@ export default function CreateGenre() {
   return (
     <>
       <h3>Create genre</h3>
-      <GenreForm model={{name: ''}} onSubmit={async value  => {
+      <GenreForm model={
+        {name: ''}
+      } 
+      onSubmit={async value  => {
         //when the form is posted
         console.log(value)
-        await new Promise((r) => setTimeout(r, 11));
+        await new Promise((r) => setTimeout(r, 2000));
        }}
       />
       </>
