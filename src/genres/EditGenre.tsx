@@ -7,15 +7,13 @@ export default function EditGenre() {
   return (
     <>
       <h3> Edit genre</h3>
-      Id is {id}{" "}
       <GenreForm
-        model={{ name: "" }}
-        onSubmit={async value => {
+        model={{ name: "Action" }}
+        onSubmit={async (value) => {
           //when the form is posted
-          await new Promise((r) => setTimeout(r, 1));
-          console.log(value);
+          await new Promise((r) => setTimeout(r, 2999));
           console.log(id);
-          
+          console.log(value);
         }}
       />
     </>

@@ -7,9 +7,20 @@
 //import configureValidation from "../Validations";
 //import { promises } from "dns";
 // hi hello
+import { useEffect } from "react";
 import GenreForm from "./GenreForm";
 
+
+
 export default function CreateGenre() {
+
+
+// useEffect(function (){
+// document.title = "Test";
+// }, [])
+
+
+
   // const history = useHistory();
   return (
     <>
@@ -17,7 +28,7 @@ export default function CreateGenre() {
       <GenreForm model={{name: ''}} onSubmit={async value  => {
         //when the form is posted
         console.log(value)
-        await new Promise((r) => setTimeout(r, 11111));
+        await new Promise((r) => setTimeout(r, 11));
        }}
       />
       </>

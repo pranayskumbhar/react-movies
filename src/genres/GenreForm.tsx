@@ -22,7 +22,7 @@ const GenreForm = (props: genreFormProp) => {
           onPointerLeaveCapture={undefined}
         >
           <TextField field="name" displayName="Name" />
-          <Button disabled={formikProps.isSubmitting} type="submit">
+          <Button className="" disabled={formikProps.isSubmitting} type="submit">
             Save Changes
           </Button>
           <Link className="btn btn-secondary" to="/genres">
