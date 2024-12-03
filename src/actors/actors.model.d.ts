@@ -1,4 +1,4 @@
 export default interface actorCreationDTO{
-    name : string;
+    name? : string;
     dateOfBirth? : Date;
 }
