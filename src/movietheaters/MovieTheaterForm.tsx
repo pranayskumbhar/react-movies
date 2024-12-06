@@ -4,7 +4,7 @@ import Button from "../utils/Button";
 import { Link } from "react-router-dom";
 import { movieTheaterCreatinDTO } from "./movieTheater.model";
 import * as Yup from "yup";
-
+import Map from "../utils/Map";
 export default function MovieTheaterForm(props: MovieTheaterForm) {
   return (
     <>
@@ -22,6 +22,9 @@ export default function MovieTheaterForm(props: MovieTheaterForm) {
             onPointerLeaveCapture={undefined}
           >
             <TextField displayName="Name" field="name" />
+            <div style={{ marginBottom: "1rem" }}>
+              <Map  />
+            </div>
             <Button type="submit" disabled={formikProps.isSubmitting}>
               Save Changes
             </Button>
