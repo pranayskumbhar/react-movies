@@ -6,8 +6,12 @@ export default function CreateMovieTheater() {
     <>
       <h3>Create Movie Theater</h3>
       <MovieTheaterForm
-        model={{ name: "" }}
-        onSubmit={(values) => console.log(values)}
+        model={{ name: ""  }}
+        onSubmit={async value  => {
+          //when the form is posted
+          console.log(value)
+          await new Promise((r) => setTimeout(r, 2000));
+         }}
       />
     </>
   );
