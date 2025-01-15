@@ -1,4 +1,4 @@
-import { Component } from "react";
+ import { Component } from "react";
 import LandingPage from "./movies/LandingPage";
 import RedirectTolandingpage from "./utils/RedirectTolandingpage";
 
@@ -19,6 +19,9 @@ import CreateMovie from "./movies/CreateMovie";
 import EditMovie from "./movies/EditMovie";
 import FilterMovies from "./movies/FilterMovies";
 
+
+import FormikFormTest from "./genres/FormikFormTest";
+
 const routes = [
     {path: '/genres' , component: IndexGenres, exact : true },
     {path: '/genres/create' , component: CreateGenre },
@@ -37,7 +40,14 @@ const routes = [
     {path: '/movies/filter' , component: FilterMovies },
 
     {path: '/' , component: LandingPage, exact : true},
-    {path: '*' , component: RedirectTolandingpage}  // catch all
+
+    {path: '/genres/basic' , component: FormikFormTest},// for test 
+
+    {path: '*' , component: RedirectTolandingpage},  // catch all
+
+
+
+
 ];
 
 export default routes;

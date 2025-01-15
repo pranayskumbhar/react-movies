@@ -1,56 +1,51 @@
-import { Link } from "react-router-dom";
-import Button from "../utils/Button";
-import { Field, Form, Formik } from "formik";
+//from udemy
+//import { Link } from "react-router-dom";
+//import Button from "../utils/Button";
+//import { Form, Formik } from "formik";
+//import * as Yup from "yup";
+//import TextField from "../forms/TextField";
+//import configureValidation from "../Validations";
+//import { promises } from "dns";
+// hi hello
+import { useEffect } from "react";
+import GenreForm from "./GenreForm";
+
+
 
 export default function CreateGenre() {
+
+
+// useEffect(function (){
+// document.title = "Test";
+// }, [])
+
+
+
   // const history = useHistory();
   return (
     <>
       <h3>Create genre</h3>
-
-      <Formik
-        initialValues={{
-          name: "",
-        }}
-        onSubmit={(value) => {
-          //when the form is posted
-          console.log(value);
-        }}
-      >
-        <Form placeholder={undefined} onPointerEnterCapture={undefined} 
-        onPointerLeaveCapture={undefined} >
-
-
-          
-          <div className="mb-3">
-            <label htmlFor="name">Name</label>
-            <Field className="form-control" name="name" />
-          </div>
-          <Button type="submit">Save Changes</Button>
-          <Link className="btn btn-secondary" to="/genres">
-            Cancel
-          </Link>
-        </Form>
-      </Formik>
+      <GenreForm model={
+        {name: ''}
+      } 
+      onSubmit={async value  => {
+        //when the form is posted
+        console.log(value)
+        await new Promise((r) => setTimeout(r, 2000));
+       }}
+      />
+      </>
+  )
+  
       {/* <Button onClick={() => {
         //saving data to db
         history.push("/genres");
       }}>Save Genre</Button> */}
-    </>
-  );
+
+  
 }
 
-
-
-
-
-
-
-
-
-
-////////    New Code 
-
+// Form React Site
 // import React from 'react';
 // import { Formik, FormikHelpers, FormikErrors } from 'formik';
 
@@ -118,7 +113,6 @@ export default function CreateGenre() {
 // );
 
 // export default CreateGenre;
-
 
 // interface FormValues {
 //   email: string;
