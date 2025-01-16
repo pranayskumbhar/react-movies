@@ -42,6 +42,7 @@ export default function EditMovie() {
         selectedGenres={selectedGenres}
         nonSelectedMovieTheaters={nonSelectedMovieTheaters}
         selectedMovieTheaters={[]}
+        selectedActor={[]}
       />
     </>
   );
