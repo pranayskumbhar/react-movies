@@ -29,6 +29,7 @@ export default function CreateMovie() {
           trailer: "",
         }}
         onSubmit={(values) => {
+          console.log('dfjshdlfsgdjhfbdsm,')
           console.log(values);
         }}
         nonSelectedGenres={nonSelectedGenres}

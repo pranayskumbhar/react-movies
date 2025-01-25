@@ -79,7 +79,7 @@ export default function MovieForm(props: movieFormProps) {
             selected={selectedGenres}
             onChange={(selected, nonSelected) => {
               setSelectedGenres(selected);
-              setnonSelectedGenres(nonSelectedGenres);
+              setnonSelectedGenres(nonSelected);
             }}
           />
 
@@ -89,7 +89,7 @@ export default function MovieForm(props: movieFormProps) {
             selected={selectedMovieTheaters}
             onChange={(selected, nonSelected) => {
               setSelectedMovieTheaters(selected);
-              setnonSelectedMovieTheaters(nonSelectedGenres);
+              setnonSelectedMovieTheaters(nonSelected);
             }}
           />
 
