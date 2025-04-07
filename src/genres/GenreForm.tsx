@@ -4,6 +4,7 @@ import TextField from "../forms/TextField";
 import { Link, useParams } from "react-router-dom";
 import Button from "../utils/Button";
 import { genreCreationDTO } from "./genres.model";
+import axios from "axios";
 const GenreForm = (props: genreFormProp) => {
 
   return (
@@ -12,7 +13,7 @@ const GenreForm = (props: genreFormProp) => {
       onSubmit={props.onSubmit}
       
       validationSchema={Yup.object({
-        name: Yup.string().required("This field is required."),
+        name: Yup.string().required("This field is required.").max(50,"Don't exceed 50 character."),
       })}
     >
       {(formikProps) => (

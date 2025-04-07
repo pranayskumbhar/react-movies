@@ -9,40 +9,42 @@
 // hi hello
 import { useEffect } from "react";
 import GenreForm from "./GenreForm";
-
-
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { urlGenres } from "../endpoints";
+import { genreCreationDTO } from "./genres.model";
 
 export default function CreateGenre() {
+  const history = useHistory();
 
-
-// useEffect(function (){
-// document.title = "Test";
-// }, [])
-
-
-
-  // const history = useHistory();
+  async function create(genre: genreCreationDTO) {
+    try {
+      axios.post(urlGenres, genre);
+      history.push("/genres");
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <>
       <h3>Create genre</h3>
-      <GenreForm model={
-        {name: ''}
-      } 
-      onSubmit={async value  => {
-        //when the form is posted
-        console.log(value)
-        await new Promise((r) => setTimeout(r, 2000));
-       }}
+      <GenreForm
+        model={{ name: "" }}
+        onSubmit={async (value) => {
+          //when the form is posted
+          console.log(value);
+          await create(value);
+        }}
       />
-      </>
-  )
-  
-      {/* <Button onClick={() => {
+    </>
+  );
+
+  {
+    /* <Button onClick={() => {
         //saving data to db
         history.push("/genres");
-      }}>Save Genre</Button> */}
-
-  
+      }}>Save Genre</Button> */
+  }
 }
 
 // Form React Site
