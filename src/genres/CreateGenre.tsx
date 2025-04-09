@@ -7,27 +7,35 @@
 //import configureValidation from "../Validations";
 //import { promises } from "dns";
 // hi hello
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import GenreForm from "./GenreForm";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { urlGenres } from "../endpoints";
 import { genreCreationDTO } from "./genres.model";
+import DisplayError from "../utils/DisplayError";
 
 export default function CreateGenre() {
   const history = useHistory();
-
+  // const [error, setError] = useState([]);
+  const [errors, setErrors] = useState<string[]>([]);
   async function create(genre: genreCreationDTO) {
+    debugger;
     try {
-      axios.post(urlGenres, genre);
+      await axios.post(urlGenres, genre);
       history.push("/genres");
-    } catch (error) {
+    } catch (axiosError) {
+      const error = axiosError as AxiosError;
       console.error(error);
+      if (error && error.response) {
+        setErrors(error.response.data);
+      }
     }
   }
   return (
     <>
       <h3>Create genre</h3>
+      <DisplayError errors={errors} />
       <GenreForm
         model={{ name: "" }}
         onSubmit={async (value) => {
