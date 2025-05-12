@@ -6,19 +6,20 @@ import { urlGenres } from "../endpoints";
 import GenericList from "../utils/GenericList";
 import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
+import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
 
 export default function IndexGenres() {
   const [genres, setGenres] = useState<genreDTO[]>([]);
 
   const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
-  const [recordsPerPage, setRecordsPerPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(5);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     console.log(urlGenres);
 
     axios
-      .get(urlGenres, {params: {page, recordsPerPage}})
+      .get(urlGenres, { params: { page, recordsPerPage } })
       .then((response: AxiosResponse<genreDTO[]>) => {
         // .then((response) => {
 
@@ -41,6 +42,14 @@ export default function IndexGenres() {
       <Link className="btn btn-primary" to="/genres/create">
         Create Genre
       </Link>
+
+      <RecordsPerPageSelect
+        onChage={(amountOfRecords) => {
+          setPage(1);
+          setRecordsPerPage(amountOfRecords);
+        }}
+      />
+
       <Pagination
         currentPage={page}
         totalAmountOfPage={totalAmountOfPages}
