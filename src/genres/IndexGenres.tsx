@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { genreDTO } from "./genres.model";
@@ -7,6 +7,8 @@ import GenericList from "../utils/GenericList";
 import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
 import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
+import DisplayError from "../utils/DisplayError";
+import customConfirm from "../utils/cutomConfim";
 
 export default function IndexGenres() {
   const [genres, setGenres] = useState<genreDTO[]>([]);
@@ -14,10 +16,14 @@ export default function IndexGenres() {
   const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
   const [page, setPage] = useState(1);
+  const [errors, setErrors] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log(urlGenres);
+    loadData();
+    // eslint-disabled-next-line react-hooks/exhaustive-deps
+  }, [page, recordsPerPage]);
 
+  function loadData() {
     axios
       .get(urlGenres, { params: { page, recordsPerPage } })
       .then((response: AxiosResponse<genreDTO[]>) => {
@@ -34,11 +40,29 @@ export default function IndexGenres() {
       .catch((exception) => {
         console.log(exception);
       });
-  }, [page, recordsPerPage]);
+  }
+
+
+  async function deleteGenre(id: number) {
+    try {
+      await axios.delete(`${urlGenres}/${id}`);
+      loadData()
+    }
+    catch (axiosError) {
+      const error = axiosError as AxiosError;
+      console.error(error);
+      if (error && error.response) {
+        setErrors(error.response.data);
+      }
+    }
+  }
+
 
   return (
     <>
       <h3>Genres List </h3>
+      {errors ? <DisplayError errors={errors} /> : null}
+
       <Link className="btn btn-primary" to="/genres/create">
         Create Genre
       </Link>
@@ -67,10 +91,12 @@ export default function IndexGenres() {
             {genres?.map((genre) => (
               <tr key={genre.id}>
                 <td>
-                  <Link className="btn btn-success" to={`/genre/${genre.id}`}>
+                  <Link className="btn btn-success" to={`/genres/edit/${genre.id}`}>
                     Edit
                   </Link>
-                  <Button className="btn btn-danger">Delete</Button>
+                  <Button onClick={() => {
+                    customConfirm(() => { deleteGenre(genre.id) });
+                  }} className="btn btn-danger">Delete</Button>
                 </td>
                 <td>{genre.name}</td>
               </tr>
