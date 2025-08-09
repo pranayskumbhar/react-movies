@@ -1,4 +1,4 @@
- import { Component } from "react";
+import { Component } from "react";
 import LandingPage from "./movies/LandingPage";
 import RedirectTolandingpage from "./utils/RedirectTolandingpage";
 
@@ -21,29 +21,33 @@ import FilterMovies from "./movies/FilterMovies";
 
 
 import FormikFormTest from "./genres/FormikFormTest";
+import Apicaller from "./LoadTesterr/Apicaller";
 
 const routes = [
-    {path: '/genres' , component: IndexGenres, exact : true },
-    {path: '/genres/create' , component: CreateGenre },
-    {path: '/genres/edit/:id(\\d+)' , component: EditGenre },
+    { path: '/genres', component: IndexGenres, exact: true },
+    { path: '/genres/create', component: CreateGenre },
+    { path: '/genres/edit/:id(\\d+)', component: EditGenre },
 
-    {path: '/actors' , component: IndexActors, exact : true },
-    {path: '/actors/create' , component: CreateActor },
-    {path: '/actors/edit/:id(\\d+)' , component: EditActor },
+    { path: '/apicaller', component: Apicaller },
 
-    {path: '/movietheaters' , component: IndexMovieTheaters, exact : true },
-    {path: '/movietheaters/create' , component: CreateMovieTheater },
-    {path: '/movietheaters/edit/:id(\\d+)' , component: EditMovieTheater },
+    { path: '/actors', component: IndexActors, exact: true },
+    { path: '/actors/create', component: CreateActor },
+    { path: '/actors/edit/:id(\\d+)', component: EditActor },
 
-     {path: '/movies/create' , component: CreateMovie },
-    {path: '/movies/edit/:id(\\d+)' , component: EditMovie },
-    {path: '/movies/filter' , component: FilterMovies },
+    { path: '/movietheaters', component: IndexMovieTheaters, exact: true },
+    { path: '/movietheaters/create', component: CreateMovieTheater },
+    { path: '/movietheaters/edit/:id(\\d+)', component: EditMovieTheater },
 
-    {path: '/' , component: LandingPage, exact : true},
+    { path: '/movies/create', component: CreateMovie },
+    { path: '/movies/edit/:id(\\d+)', component: EditMovie },
+    { path: '/movies/filter', component: FilterMovies },
 
-    {path: '/genres/basic' , component: FormikFormTest},// for test 
+    { path: '/', component: LandingPage, exact: true },
 
-    {path: '*' , component: RedirectTolandingpage},  // catch all
+    { path: '/genres/basic', component: FormikFormTest },// for test 
+
+    { path: '*', component: RedirectTolandingpage }  // catch all
+
 
 
 
