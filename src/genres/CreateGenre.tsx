@@ -20,15 +20,14 @@ export default function CreateGenre() {
   // const [error, setError] = useState([]);
   const [errors, setErrors] = useState<string[]>([]);
   async function create(genre: genreCreationDTO) {
-    debugger;
-    try {
+     try {
       await axios.post(urlGenres, genre);
       history.push("/genres");
     } catch (axiosError) {
       const error = axiosError as AxiosError;
       console.error(error);
       if (error && error.response) {
-        setErrors(error.response.data);
+        setErrors(error.response.data as string[]);
       }
     }
   }

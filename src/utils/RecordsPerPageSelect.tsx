@@ -14,10 +14,13 @@ export default function RecordsPerPageSelect(props : recordsPerPageSelectProps){
           <option value={25}>25</option>
           <option value={50}>50</option>
         </select>
+
+        Total No Of Records : {props.TotalNoOfRecords}
       </div>
     )
 }
 
 interface recordsPerPageSelectProps {
    onChage(recordsPerPage : number): void;
+   TotalNoOfRecords : number;
 }
