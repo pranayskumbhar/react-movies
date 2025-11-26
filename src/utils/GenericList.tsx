@@ -13,6 +13,7 @@ export default function GenericList(props: genericListProps) {
     }
     return <Loading/>;
   } else {
+    console.log("props.children", props.children)
     return props.children;
   }
 }

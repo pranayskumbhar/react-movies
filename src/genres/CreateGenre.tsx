@@ -7,42 +7,52 @@
 //import configureValidation from "../Validations";
 //import { promises } from "dns";
 // hi hello
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import GenreForm from "./GenreForm";
-
-
+import { useHistory } from "react-router-dom";
+import axios, { AxiosError } from "axios";
+import { urlGenres } from "../endpoints";
+import { genreCreationDTO } from "./genres.model";
+import DisplayError from "../utils/DisplayError";
 
 export default function CreateGenre() {
-
-
-// useEffect(function (){
-// document.title = "Test";
-// }, [])
-
-
-
-  // const history = useHistory();
+  const history = useHistory();
+  // const [error, setError] = useState([]);
+  const [errors, setErrors] = useState<string[]>([]);
+  async function create(genre: genreCreationDTO) {
+    debugger;
+    try {
+      await axios.post(urlGenres, genre);
+      history.push("/genres");
+    } catch (axiosError) {
+      const error = axiosError as AxiosError;
+      console.error(error);
+      if (error && error.response) {
+        setErrors(error.response.data);
+      }
+    }
+  }
   return (
     <>
       <h3>Create genre</h3>
-      <GenreForm model={
-        {name: ''}
-      } 
-      onSubmit={async value  => {
-        //when the form is posted
-        console.log(value)
-        await new Promise((r) => setTimeout(r, 2000));
-       }}
+      <DisplayError errors={errors} />
+      <GenreForm
+        model={{ name: "" }}
+        onSubmit={async (value) => {
+          //when the form is posted
+          console.log(value);
+          await create(value);
+        }}
       />
-      </>
-  )
-  
-      {/* <Button onClick={() => {
+    </>
+  );
+
+  {
+    /* <Button onClick={() => {
         //saving data to db
         history.push("/genres");
-      }}>Save Genre</Button> */}
-
-  
+      }}>Save Genre</Button> */
+  }
 }
 
 // Form React Site

@@ -52,6 +52,7 @@ export default function MovieForm(props: movieFormProps) {
       onSubmit={(values, action) => {
         values.genresIds = selectedGenres.map((item) => item.key);
         values.movieTheaterIds = selectedMovieTheaters.map((item) => item.key);
+        values.actors = selectedActors;
         props.onSubmit(values, action);
       }}
       validationSchema={Yup.object({
@@ -79,7 +80,7 @@ export default function MovieForm(props: movieFormProps) {
             selected={selectedGenres}
             onChange={(selected, nonSelected) => {
               setSelectedGenres(selected);
-              setnonSelectedGenres(nonSelectedGenres);
+              setnonSelectedGenres(nonSelected);
             }}
           />
 
@@ -89,7 +90,7 @@ export default function MovieForm(props: movieFormProps) {
             selected={selectedMovieTheaters}
             onChange={(selected, nonSelected) => {
               setSelectedMovieTheaters(selected);
-              setnonSelectedMovieTheaters(nonSelectedGenres);
+              setnonSelectedMovieTheaters(nonSelected);
             }}
           />
 
@@ -111,7 +112,6 @@ export default function MovieForm(props: movieFormProps) {
                   <input
                     placeholder="Enter an input"
                     type="text"
-                 
                     value={actor.character}
                     onCanPlay={(e) => {
                       const index = selectedActors.findIndex(

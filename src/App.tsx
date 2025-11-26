@@ -28,6 +28,12 @@ function App() {
             </Route>
           ))}
         </Switch>
+        <footer className="bd-footer py-5 mt-5 bg-loight">
+          <div className="container">
+            &copy; - React Movies {new Date().getFullYear().toString()} - Made
+            With Love ❤
+          </div>
+        </footer>
       </div>
     </BrowserRouter>
   );
