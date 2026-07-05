@@ -6,6 +6,10 @@ export default interface actorCreationDTO {
     biography?: string;
 }
 
+export interface actorDTO {
+    id: number;
+    name: string;
+}
 
 export interface actorMovieDTO{
     id : number;
